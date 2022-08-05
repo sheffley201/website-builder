@@ -1,14 +1,14 @@
-import { useContext } from "react";
 import "./App.css";
 
 import PageProvider from "./context/PageProvider";
 
+import BuiltPage from "./components/layout/BuiltPage/BuiltPage";
+
 function App() {
-    const pageContext = useContext(PageProvider);
 
 	return (
 		<PageProvider>
-			{pageContext.page}
+			<BuiltPage />
 		</PageProvider>
 	);
 }
