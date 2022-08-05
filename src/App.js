@@ -1,11 +1,15 @@
-import { Fragment } from "react";
+import { useContext } from "react";
 import "./App.css";
 
+import PageProvider from "./context/PageProvider";
+
 function App() {
+    const pageContext = useContext(PageProvider);
+
 	return (
-		<Fragment>
-			<h1>Hello World</h1>
-		</Fragment>
+		<PageProvider>
+			{pageContext.page}
+		</PageProvider>
 	);
 }
 
