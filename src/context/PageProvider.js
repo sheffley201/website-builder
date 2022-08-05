@@ -4,6 +4,7 @@ import PageContext from "./page-context";
 import Header from "../components/modules/Header/Header";
 import NavBar from "../components/modules/NavBar/NavBar";
 import About from "../components/modules/About/About";
+import Footer from "../components/modules/Footer/Footer";
 
 const PageProvider = ({ children }) => {
 
@@ -11,7 +12,8 @@ const PageProvider = ({ children }) => {
 		page: [
             <Header />,
             <NavBar />,
-            <About />
+            <About />,
+            <Footer />
         ],
 	};
 

@@ -1,5 +1,5 @@
-const About = props => {
+const NavBar = props => {
 	return <h1>NavBar</h1>;
 };
 
-export default About;
+export default NavBar;
