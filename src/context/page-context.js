@@ -1,7 +1,8 @@
 import React from "react";
 
 const PageContext = React.createContext({
-    page: [],
+    page: {},
+    columns: {},
     colors: [],
     addModule: module => {},
     removeModule: id => {},

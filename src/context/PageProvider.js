@@ -9,12 +9,31 @@ import Footer from "../components/modules/Footer/Footer";
 const PageProvider = ({ children }) => {
 
 	const pageContext = {
-		page: [
-            <Header />,
-            <NavBar />,
-            <About />,
-            <Footer />
-        ],
+		page: {
+            "header": {
+                id: 'header',
+                component: <Header />,
+            },
+            "navbar": {
+                id: 'navbar',
+                component: <NavBar />,
+            },
+            "about":{
+                id: "about",
+                component: <About />,
+            },
+            "footer": {
+                id: "footer",
+                component: <Footer />,
+            },
+        },
+        columns: {
+            'sidebar': {
+                id: 'sidebar',
+                title: 'Sections',
+                modules: ['header', 'navbar', 'about', 'footer'],
+            }
+        },
 	};
 
 	return (
