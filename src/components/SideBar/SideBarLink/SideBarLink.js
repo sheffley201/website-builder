@@ -1,6 +1,6 @@
 import { Draggable } from "react-beautiful-dnd";
 
-const Module = props => {
+const SideBarLink = props => {
 	return (
 		<Draggable draggableId={props.id} index={props.index}>
 			{provided => (
@@ -16,4 +16,4 @@ const Module = props => {
 	);
 };
 
-export default Module;
+export default SideBarLink;

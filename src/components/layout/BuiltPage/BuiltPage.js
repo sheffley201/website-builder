@@ -3,7 +3,7 @@ import "./BuiltPage.module.css";
 import { Droppable } from "react-beautiful-dnd";
 
 import PageContext from "../../../context/page-context";
-import Module from "../../modules/Module/Module";
+import SideBarLink from "../../SideBar/SideBarLink/SideBarLink";
 
 const BuiltPage = props => {
 	const pageContext = useContext(PageContext);
@@ -20,13 +20,13 @@ const BuiltPage = props => {
 				<ul ref={provided.innerRef} {...provided.droppableProps}>
 					{modules.map((module, index) => {
 						return (
-							<Module
+							<SideBarLink
 								key={module.id}
 								id={module.id}
 								index={index}
 							>
 								{module.component}
-							</Module>
+							</SideBarLink>
 						);
 					})}
 					{provided.placeholder}

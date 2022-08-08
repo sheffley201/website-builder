@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 import PageContext from "./page-context";
-import Header from "../components/modules/Header/Header";
-import NavBar from "../components/modules/NavBar/NavBar";
-import About from "../components/modules/About/About";
-import Footer from "../components/modules/Footer/Footer";
+import Header from "../components/SideBar/Header/Header";
+import NavBar from "../components/SideBar/NavBar/NavBar";
+import About from "../components/SideBar/About/About";
+import Footer from "../components/SideBar/Footer/Footer";
 
 const PageProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
@@ -22,8 +22,6 @@ const PageProvider = ({ children }) => {
             ]);
         }
     }, []);
-
-    console.log(order);
 
 	const page = {
 		page: {
