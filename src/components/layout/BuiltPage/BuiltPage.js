@@ -10,8 +10,8 @@ const BuiltPage = props => {
 
     const modules = [];
 
-    for (let key in pageContext.page) {
-        modules.push(pageContext.page[key]);
+    for (let id in pageContext.columns.sidebar.modules) {
+        modules.push(pageContext.page[pageContext.columns.sidebar.modules[id]]);
     }
 
     console.log(modules);

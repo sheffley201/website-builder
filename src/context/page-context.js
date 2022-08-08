@@ -6,6 +6,7 @@ const PageContext = React.createContext({
     colors: [],
     addModule: module => {},
     removeModule: id => {},
+    onDragEnd: result => {},
 });
 
 export default PageContext;
