@@ -14,8 +14,6 @@ const BuiltPage = props => {
         modules.push(pageContext.page[pageContext.columns.sidebar.modules[id]]);
     }
 
-    console.log(modules);
-
 	return (
 		<Droppable droppableId={pageContext.columns.sidebar.id}>
 			{provided => (

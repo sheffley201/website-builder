@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import PageContext from "./page-context";
 import Header from "../components/modules/Header/Header";
@@ -7,7 +7,25 @@ import About from "../components/modules/About/About";
 import Footer from "../components/modules/Footer/Footer";
 
 const PageProvider = ({ children }) => {
-	const [page, setPage] = useState({
+    const [order, setOrder] = useState([]);
+
+    useEffect(() => {
+        const localOrder = localStorage.getItem("order");
+        if (localOrder) {
+            setOrder(JSON.parse(localOrder));
+        } else {
+            setOrder([
+                "header",
+                "navbar",
+                "about",
+                "footer"
+            ]);
+        }
+    }, []);
+
+    console.log(order);
+
+	const page = {
 		page: {
 			header: {
 				id: "header",
@@ -30,10 +48,10 @@ const PageProvider = ({ children }) => {
 			sidebar: {
 				id: "sidebar",
 				title: "Sections",
-				modules: ["header", "navbar", "about", "footer"],
+				modules: order,
 			},
 		},
-	});
+	};
 
     const onDragEnd = result => {
         console.log("running");
@@ -55,20 +73,9 @@ const PageProvider = ({ children }) => {
         newModules.splice(source.index, 1);
         newModules.splice(destination.index, 0, draggableId);
 
-        const newColumn = {
-            ...column,
-            modules: newModules,
-        };
+        localStorage.setItem("order", JSON.stringify(newModules));
 
-        const newPage = {
-            ...page,
-            columns: {
-                ...page.columns,
-                [newColumn.id]: newColumn,
-            },
-        };
-
-        setPage(newPage);
+        setOrder(newModules);
 	};
 
     const pageContext = {
