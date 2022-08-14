@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import "./SideBar.module.css";
+import styles from "./SideBar.module.css";
 import { Droppable } from "react-beautiful-dnd";
 
 import PageContext from "../../../context/page-context";
@@ -25,7 +25,7 @@ const SideBar = props => {
 								id={module.id}
 								index={index}
 							>
-								{module.component}
+								{module.sidebarComponent}
 							</SideBarLink>
 						);
 					})}

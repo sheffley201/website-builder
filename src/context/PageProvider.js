@@ -6,6 +6,11 @@ import NavBar from "../components/layout/SideBar/NavBar/NavBar";
 import About from "../components/layout/SideBar/About/About";
 import Footer from "../components/layout/SideBar/Footer/Footer";
 
+import BuiltHeader from "../components/layout/BuiltPage/Header/BuiltHeader";
+import BuiltNavBar from "../components/layout/BuiltPage/NavBar/BuiltNavBar";
+import BuiltAbout from "../components/layout/BuiltPage/About/BuiltAbout";
+import BuiltFooter from "../components/layout/BuiltPage/Footer/BuiltFooter";
+
 const PageProvider = ({ children }) => {
 	const [order, setOrder] = useState([]);
 
@@ -22,19 +27,23 @@ const PageProvider = ({ children }) => {
 		page: {
 			header: {
 				id: "header",
-				component: <Header />,
+				sidebarComponent: <Header />,
+                mainComponent: <BuiltHeader />,
 			},
 			navbar: {
 				id: "navbar",
-				component: <NavBar />,
+				sidebarComponent: <NavBar />,
+                mainComponent: <BuiltNavBar />,
 			},
 			about: {
 				id: "about",
-				component: <About />,
+				sidebarComponent: <About />,
+                mainComponent: <BuiltAbout />,
 			},
 			footer: {
 				id: "footer",
-				component: <Footer />,
+				sidebarComponent: <Footer />,
+                mainComponent: <BuiltFooter />,
 			},
 		},
 		columns: {
