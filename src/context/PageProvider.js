@@ -1,27 +1,22 @@
 import { useState, useEffect } from "react";
 
 import PageContext from "./page-context";
-import Header from "../components/SideBar/Header/Header";
-import NavBar from "../components/SideBar/NavBar/NavBar";
-import About from "../components/SideBar/About/About";
-import Footer from "../components/SideBar/Footer/Footer";
+import Header from "../components/layout/SideBar/Header/Header";
+import NavBar from "../components/layout/SideBar/NavBar/NavBar";
+import About from "../components/layout/SideBar/About/About";
+import Footer from "../components/layout/SideBar/Footer/Footer";
 
 const PageProvider = ({ children }) => {
-    const [order, setOrder] = useState([]);
+	const [order, setOrder] = useState([]);
 
-    useEffect(() => {
-        const localOrder = localStorage.getItem("order");
-        if (localOrder) {
-            setOrder(JSON.parse(localOrder));
-        } else {
-            setOrder([
-                "header",
-                "navbar",
-                "about",
-                "footer"
-            ]);
-        }
-    }, []);
+	useEffect(() => {
+		const localOrder = localStorage.getItem("order");
+		if (localOrder) {
+			setOrder(JSON.parse(localOrder));
+		} else {
+			setOrder(["header", "navbar", "about", "footer"]);
+		}
+	}, []);
 
 	const page = {
 		page: {
@@ -51,8 +46,8 @@ const PageProvider = ({ children }) => {
 		},
 	};
 
-    const onDragEnd = result => {
-        console.log("running");
+	const onDragEnd = result => {
+		console.log("running");
 		const { destination, source, draggableId } = result;
 
 		if (!destination) {
@@ -68,20 +63,24 @@ const PageProvider = ({ children }) => {
 
 		const column = page.columns[source.droppableId];
 		const newModules = Array.from(column.modules);
-        newModules.splice(source.index, 1);
-        newModules.splice(destination.index, 0, draggableId);
+		newModules.splice(source.index, 1);
+		newModules.splice(destination.index, 0, draggableId);
 
-        localStorage.setItem("order", JSON.stringify(newModules));
+		localStorage.setItem("order", JSON.stringify(newModules));
 
-        setOrder(newModules);
+		setOrder(newModules);
 	};
 
-    const pageContext = {
-        ...page,
-        onDragEnd: onDragEnd,
-    };
+	const pageContext = {
+		...page,
+		onDragEnd: onDragEnd,
+	};
 
-	return <PageContext.Provider value={pageContext}>{children}</PageContext.Provider>;
+	return (
+		<PageContext.Provider value={pageContext}>
+			{children}
+		</PageContext.Provider>
+	);
 };
 
 export default PageProvider;

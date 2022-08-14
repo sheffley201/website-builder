@@ -3,7 +3,7 @@ import "./BuiltPage.module.css";
 import { Droppable } from "react-beautiful-dnd";
 
 import PageContext from "../../../context/page-context";
-import SideBarLink from "../../SideBar/SideBarLink/SideBarLink";
+import SideBarLink from "../SideBar/SideBarLink/SideBarLink";
 
 const BuiltPage = props => {
 	const pageContext = useContext(PageContext);

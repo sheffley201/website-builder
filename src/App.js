@@ -2,12 +2,12 @@ import "./App.css";
 
 import PageProvider from "./context/PageProvider";
 
-import BuiltPageContainer from "./components/layout/BuiltPage/BuiltPageContainer";
+import SideBarContainer from "./components/layout/SideBar/SideBarContainer";
 
 function App() {
 	return (
 		<PageProvider>
-			<BuiltPageContainer />
+			<SideBarContainer />
 		</PageProvider>
 	);
 }
