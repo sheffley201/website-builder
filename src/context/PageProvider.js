@@ -13,6 +13,9 @@ import BuiltFooter from "../components/layout/BuiltPage/Footer/BuiltFooter";
 
 const PageProvider = ({ children }) => {
 	const [order, setOrder] = useState([]);
+	const [headerText, setHeaderText] = useState("Welcome to the website!");
+	const [aboutText, setAboutText] = useState("This is the about section.");
+	const [footerText, setFooterText] = useState("This is the footer section.");
 
 	useEffect(() => {
 		const localOrder = localStorage.getItem("order");
@@ -28,22 +31,25 @@ const PageProvider = ({ children }) => {
 			header: {
 				id: "header",
 				sidebarComponent: <Header />,
-                mainComponent: <BuiltHeader />,
+				mainComponent: <BuiltHeader />,
+				text: headerText,
 			},
 			navbar: {
 				id: "navbar",
 				sidebarComponent: <NavBar />,
-                mainComponent: <BuiltNavBar />,
+				mainComponent: <BuiltNavBar />,
 			},
 			about: {
 				id: "about",
 				sidebarComponent: <About />,
-                mainComponent: <BuiltAbout />,
+				mainComponent: <BuiltAbout />,
+				text: aboutText,
 			},
 			footer: {
 				id: "footer",
 				sidebarComponent: <Footer />,
-                mainComponent: <BuiltFooter />,
+				mainComponent: <BuiltFooter />,
+				text: footerText,
 			},
 		},
 		columns: {
@@ -53,6 +59,18 @@ const PageProvider = ({ children }) => {
 				modules: order,
 			},
 		},
+	};
+
+	const setHeaderTextHandler = text => {
+		setHeaderText(text);
+	};
+
+	const setAboutTextHandler = text => {
+		setAboutText(text);
+	};
+
+	const setFooterTextHandler = text => {
+		setFooterText(text);
 	};
 
 	const onDragEnd = result => {
@@ -83,6 +101,9 @@ const PageProvider = ({ children }) => {
 	const pageContext = {
 		...page,
 		onDragEnd: onDragEnd,
+		setHeaderText: setHeaderTextHandler,
+        setAboutText: setAboutTextHandler,
+        setFooterText: setFooterTextHandler,
 	};
 
 	return (
